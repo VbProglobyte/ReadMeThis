@@ -1,8 +1,11 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+// generate readMe markdown ================================================ NEW
+const generateMD = require('./generateMarkdown.js');
 
-const html = (title, description, tOc, install, usage, license, contra, tests, questions) => 
+// generated html  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx - to check entries, class ref.
+const html = (title, description, tOc, install, usage, license, contra, tests, questions1, questions2) => 
 `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +24,17 @@ const html = (title, description, tOc, install, usage, license, contra, tests, q
         <li> License: ${license} </li>
         <li> Contributing: ${contra} </li>
         <li> Tests: ${tests} </li>
-        <li> Questions: ${questions} </li>
+        <li> Questions: ${questions1} </li>
+        <li> Questions: ${questions2} </li>
     </ul>
 </body>
 </html>`  
 
 
-
-inquirer.prompt([
+// // An array of questions for user input
+// const questions = []; ---------------------------------------------------------------
+const readMeThis = () => {
+return inquirer.prompt([
     {
 // title
         name: "title",
@@ -69,7 +75,7 @@ inquirer.prompt([
     {
         name: "contra",
         type: "input",
-        message: "do you have any contributions you want to add? - CONTRIBUTIONS / N/A",
+        message: "do you have any contributions you want to add?  CONTRIBUTIONS / N/A",
     },
 // tests
     {
@@ -77,28 +83,41 @@ inquirer.prompt([
         type: "input",
         message: "any testing? - TEST FIGURES / N/A",
     },
-// questions
+// questions -- email
     {
-        name: "questions",
+        name: "questions1",
         type: "input",
-        message: "whant to add your email and/or GitHub?",
+        message: "want to add your email?",
+    },
+// questions -- gitHub
+    {
+        name: "questions2",
+        type: "input",
+        message: "want to add your GitHub?",
     },
 
-]).then((answers) => {
-   const generatedHTML = html(answers.title, answers.description, answers.tOc, answers.install, answers.usage, answers.license, answers.contra, answers.tests, answers.questions);
-   fs.writeFile("index.html", generatedHTML, (err) => console.log(err)) ;
+])
+// .then((answers) => {
+//    const generatedHTML = html(answers.title, answers.description, answers.tOc, answers.install, answers.usage, answers.license, answers.contra, answers.tests, answers.questions1, answers.questions2);
+//    fs.writeFile("index.html", generatedHTML, (err) => console.log(err)) ;
     
-});
+// });
+};
 
-
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
-// // TODO: Create a function to write README file
+// // A function to write README file
 // function writeToFile(fileName, data) {}
 
-// // TODO: Create a function to initialize app
-// function init() {}
+
+
 
 // // Function call to initialize app
-// init();
+// init() {} -- create an init variable to exicute --------------------------------------------------
+const init = () => {
+    readMeThis() // questions variable 
+        .then((answers) => writeFileAsync('./output/README.md', generateMD(answers))) // to output the readMe
+        .then(() => console.log('Successfully wrote READMD.md to your output folder')) //confirmation 
+        .catch((err) => console.error(err)); // to catch any errors
+};
+
+// Init function call  ---// init()
+init();

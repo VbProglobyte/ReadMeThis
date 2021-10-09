@@ -24,8 +24,8 @@ const html = (title, description, tOc, install, usage, license, contra, tests, q
         <li> License: ${license} </li>
         <li> Contributing: ${contra} </li>
         <li> Tests: ${tests} </li>
-        <li> Questions: ${questions1} </li>
-        <li> Questions: ${questions2} </li>
+        <li> Questions - gitHub: ${github} </li>
+        <li> Questions - email: ${email} </li>
     </ul>
 </body>
 </html>`  
@@ -85,15 +85,15 @@ return inquirer.prompt([
     },
 // questions -- email
     {
-        name: "questions1",
+        name: "github",
         type: "input",
-        message: "want to add your email?",
+        message: "want to add your gitHub?",
     },
 // questions -- gitHub
     {
-        name: "questions2",
+        name: "email",
         type: "input",
-        message: "want to add your GitHub?",
+        message: "want to add your email?",
     },
 
 ])
@@ -110,12 +110,12 @@ return inquirer.prompt([
 
 
 
-// // Function call to initialize app
+// // Function call to initialize the app
 // init() {} -- create an init variable to exicute --------------------------------------------------
 const init = () => {
     readMeThis() // questions variable 
         .then((answers) => writeFileAsync('./output/README.md', generateMD(answers))) // to output the readMe
-        .then(() => console.log('Successfully wrote READMD.md to your output folder')) //confirmation 
+        .then(() => console.log('READMD.md added to output folder')) //confirmation 
         .catch((err) => console.error(err)); // to catch any errors
 };
 

@@ -8,7 +8,7 @@ const generateMarkdown = require('./util/generateMarkdown.js');
 
 // // An array of questions for user input
 // const questions = []; ---------------------------------------------------------------
-// const readMeThis = () => {
+
 const questions = [
     {
 // title
@@ -24,7 +24,7 @@ const questions = [
     },
     {
 // installation
-        name: "install",
+        name: "installation",
         type: "input",
         message: "how to install?",
     },
@@ -43,7 +43,7 @@ const questions = [
     },
 // contributions
     {
-        name: "contributions",
+        name: "contributing",
         type: "input",
         message: "do you have any contributions you want to add?",
     },
@@ -68,10 +68,11 @@ const questions = [
 
 ];
 
-inquirer.prompt(questions).then(answers => {
-    fs.writeFile('generated-READMEthis.md', generateMarkdown(answers),function (err){
-        console.log(err)
-    })
-})
+inquirer.prompt(questions)
+    .then(answers => {
+        fs.writeFile('generated-READMEthis.md', generateMarkdown(answers), (err)=>{
+        err ? console.log(err) : console.log('Successfully created!')
+    });
+});
 
 

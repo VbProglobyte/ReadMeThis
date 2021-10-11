@@ -1,6 +1,6 @@
 
 //LICENSES :  BSD, MIT, Apache - for now combine into an array
-
+function renderLicenseBadge(license) {
     const licenses = [
         { // [0]
             licenseBadge: '[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)',
@@ -45,6 +45,7 @@
             section: ``,
         }
       ];
+        
     //   switch (license) { //////////////////////////////// - only used switch once. look up for more detail - did not work. leave for now
     //     case 'BSD':
     //       response = `[![${licenses[0].licenseBadge}]${licenses[0].link}]${licenses[0].section}`;
@@ -65,16 +66,17 @@
     //   return response;
     // };
     
-
+    }
+   
 
 function generateMarkdown(answers) { // answers.license and answers -- create title (of ReadMe) and sections 
     // /////////////////////////////////////////////////////////////////////////
   return `# ${answers.title} 
- 
+  ${renderLicenseBadge(answers.license,answers)}
   ## Description
      ${answers.description}
 
-  ### Table of Contents
+  ## Table of Contents
      * [Installation](#Installation)
      * [Usage](#Usage)
      * [License](#License)
@@ -98,8 +100,8 @@ function generateMarkdown(answers) { // answers.license and answers -- create ti
     ${answers.tests}
 
   ### Contact
-    GitHub : [${answers.github}]
-    Email : [${answers.email}]
+    GitHub : ${answers.github}
+    Email : ${answers.email}
   `;
 };
 // /////////////////////////////////////////////

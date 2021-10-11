@@ -1,7 +1,7 @@
-# ;ldksfh;lkhf 
+# ReadMeThis 
   undefined
   ## Description
-     s;lkfh;lkhdf
+     a readMe generator
 
   ## Table of Contents
      * [Installation](#Installation)
@@ -12,21 +12,21 @@
      * [Contact](#Contact)
 
   ## Installation
-    ;sl'kdhf;lfkjse
+    install node
 
   ## Usage 
-    ;lkxdhf;lkjsdf
+    answer the questions
 
   ### License
     
 
   ### Contributing
-    ;ljdf
+    n/a
 
   ### Tests
-    ';sldjf';lkse
+    n/a
 
   ### Contact
-    GitHub : ';xljdf';lkxf
-    Email : ';ljd'f
+    GitHub : VbProglobyte
+    Email : vsbrisendine@gmail.com
   

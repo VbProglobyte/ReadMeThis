@@ -39,7 +39,7 @@ const questions = [
         name: "license",
         type: "checkbox",
         message: "do you have any licenses you want to add?",
-        choices: ['BSD', 'APACHE', 'MIT', 'N/A'],
+        choices: ['BSD', 'APACHE', 'MIT', 'NONE'],
     },
 // contributions
     {
